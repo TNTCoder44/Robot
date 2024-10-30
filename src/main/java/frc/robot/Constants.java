@@ -14,9 +14,11 @@ package frc.robot;
  */
 public final class Constants {
   public static class Drive {
-    public static final int FRONT_RIGHT_ID = 0;
-    public static final int BACK_RIGHT_ID = 1;  
-    public static final int FRONT_LEFT_ID = 2; // inverted
-    public static final int BACK_LEFT_ID = 3;  
+    public static final int FRONT_RIGHT_ID = 12;
+    public static final int BACK_RIGHT_ID = 13;  
+    public static final int FRONT_LEFT_ID = 10; 
+    public static final int BACK_LEFT_ID = 11;  
+
+    public static final double DRIVE_MOTOR_ROTATION_M = 0.47877872 / 10.71;
   }
 }

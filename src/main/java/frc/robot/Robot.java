@@ -4,12 +4,14 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.motorcontrol.Talon;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.commands.Drive.DriveCommand;
 import frc.robot.subsystems.DriveSubsystem;
 
 /**
@@ -32,9 +34,12 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
-    Shuffleboard.getTab("Test").add(DriveSubsystem.get_instance());
-    //DriveSubsystem.get_instance();
-    //DriveSubsystem.get_instance().setDefaultCommand(new DriveCommand());
+    Shuffleboard.getTab("Robot").add(DriveSubsystem.get_instance());
+    Shuffleboard.getTab("System").add(CommandScheduler.getInstance());
+
+    // Initialize subsystems
+    DriveSubsystem.get_instance();
+    DriveSubsystem.get_instance().setDefaultCommand(new DriveCommand());
   }
 
   /**
@@ -69,8 +74,6 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {}
 
-  private XboxController controller;
-
   @Override
   public void teleopInit() {
     // This makes sure that the autonomous stops running when
@@ -80,14 +83,11 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
-
-    controller = new XboxController(0);
   }
 
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    DriveSubsystem.get_instance().drive_c(-controller.getLeftY(), controller.getLeftX(), controller.getRightX());
   }
 
   @Override
