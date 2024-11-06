@@ -11,8 +11,9 @@ import edu.wpi.first.wpilibj.motorcontrol.Talon;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.commands.Drive.DriveCommand;
+import frc.robot.commands.drive.DriveCommand;
 import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.ThrowerSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -23,7 +24,6 @@ import frc.robot.subsystems.DriveSubsystem;
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
-  private RobotContainer m_robotContainer;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -32,14 +32,13 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
-    // autonomous chooser on the dashboard.
-    m_robotContainer = new RobotContainer();
-    Shuffleboard.getTab("Robot").add(DriveSubsystem.get_instance());
+    // autonomous chooser on the dashboard
+    Shuffleboard.getTab("Robot").add(DriveSubsystem.getInstance());
     Shuffleboard.getTab("System").add(CommandScheduler.getInstance());
 
     // Initialize subsystems
-    DriveSubsystem.get_instance();
-    DriveSubsystem.get_instance().setDefaultCommand(new DriveCommand());
+    DriveSubsystem.getInstance();
+    DriveSubsystem.getInstance().setDefaultCommand(new DriveCommand());
   }
 
   /**

@@ -21,4 +21,10 @@ public final class Constants {
 
     public static final double DRIVE_MOTOR_ROTATION_M = 0.47877872 / 10.71;
   }
+
+  public static class Thrower {
+    public static final int BOTTOM_ID = 21;
+    public static final int TOP_RIGHT = 22;
+    public static final int TOP_LEFT = 23;
+  }
 }

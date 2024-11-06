@@ -31,12 +31,12 @@ public class DriveSubsystem extends SubsystemBase {
     private RelativeEncoder encoderLeft;
 
     public DriveSubsystem () {
-        initialize_motors();
+        initializeMotors();
 
         driveController = new DifferentialDrive(motorControllerFrontLeft, motorControllerFrontRight);
     } 
 
-    public static DriveSubsystem get_instance() {
+    public static DriveSubsystem getInstance() {
         if (instance == null) {
             System.out.println("drive init");
             instance = new DriveSubsystem();
@@ -44,7 +44,7 @@ public class DriveSubsystem extends SubsystemBase {
         return instance;
     }
 
-    public void initialize_motors() {
+    public void initializeMotors() {
         motorControllerFrontRight = new CANSparkMax(Constants.Drive.FRONT_RIGHT_ID, MotorType.kBrushless);
         motorControllerFrontLeft = new CANSparkMax(Constants.Drive.FRONT_LEFT_ID, MotorType.kBrushless);
         motorControllerBackRight = new CANSparkMax(Constants.Drive.BACK_RIGHT_ID, MotorType.kBrushless);
@@ -68,7 +68,7 @@ public class DriveSubsystem extends SubsystemBase {
 
     }
 
-    public void drive_c(double x, double y) {
+    public void drive(double x, double y) {
         driveController.arcadeDrive(x, y, true);
     }
 
