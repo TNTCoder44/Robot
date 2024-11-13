@@ -27,4 +27,12 @@ public final class Constants {
     public static final int TOP_RIGHT = 22;
     public static final int TOP_LEFT = 23;
   }
+
+  public static class Pickup {
+    public static final int PICKUP_ID = 14;
+  }
+
+  public static class Tunnel {
+    public static final int TUNNEL_ID = 15;
+  }
 }
