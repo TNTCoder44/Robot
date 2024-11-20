@@ -4,6 +4,7 @@
 
 package frc.robot.commands.thrower;
 
+import frc.robot.Constants;
 import frc.robot.Controller;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.ThrowerSubsystem;
@@ -26,7 +27,7 @@ public class MotorTopCommand extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {    
-    ThrowerSubsystem.getInstance().startMotorTop(0.5);
+    ThrowerSubsystem.getInstance().startMotorTop(Constants.Thrower.SHOOTER_SPEED);
   }
 
   // Called every time the scheduler runs while the command is scheduled.

@@ -69,7 +69,7 @@ public class DriveSubsystem extends SubsystemBase {
     }
 
     public void drive(double x, double y) {
-        driveController.arcadeDrive(x, y, true);
+        driveController.arcadeDrive(-x, y, true);
     }
 
     @Override

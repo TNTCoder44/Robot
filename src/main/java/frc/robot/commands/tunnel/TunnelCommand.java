@@ -5,7 +5,9 @@
 package frc.robot.commands.tunnel;
 
 import frc.robot.Controller;
+import frc.robot.Constants.Tunnel;
 import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.PickupSubsystem;
 import frc.robot.subsystems.ThrowerSubsystem;
 import frc.robot.subsystems.TunnelSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -26,7 +28,7 @@ public class TunnelCommand extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    TunnelSubsystem.getInstance().startMotor(0.5);
+    TunnelSubsystem.getInstance().startMotor(1);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -34,14 +36,14 @@ public class TunnelCommand extends Command {
   public void execute() {}
 
   // Called once the command ends or is interrupted.
-  @Override
-  public void end(boolean interrupted) {
-    //ThrowerSubsystem.getInstance().startMotorBottom(0);
+  @Override 
+  public void end(boolean interrupted) { 
+    TunnelSubsystem.getInstance().startMotor(0);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return true;
+    return false;
   }
 }
