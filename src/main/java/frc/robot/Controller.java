@@ -18,7 +18,7 @@ public class Controller {
 
     private JoystickButton buttonShoot;
     private JoystickButton buttonPickup;
-    private JoystickButton buttonTunnel;
+    // private JoystickButton buttonTunnel;
 
     public Controller() {
         controller = new Joystick(0);

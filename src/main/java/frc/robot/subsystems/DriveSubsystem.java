@@ -6,6 +6,10 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
+import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.geometry.Translation2d;
+import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.util.sendable.SendableBuilder;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -30,8 +34,12 @@ public class DriveSubsystem extends SubsystemBase {
     private RelativeEncoder encoderRight;
     private RelativeEncoder encoderLeft;
 
+    private DifferentialDriveOdometry odometry;
+
     public DriveSubsystem () {
         initializeMotors();
+
+        odometry = new DifferentialDriveOdometry(new Rotation2d(0), 0, 0);
 
         driveController = new DifferentialDrive(motorControllerFrontLeft, motorControllerFrontRight);
     } 
