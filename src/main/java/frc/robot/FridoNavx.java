@@ -4,7 +4,7 @@ import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.I2C.Port;
 
-class FridoNavx extends AHRS {
+public class FridoNavx extends AHRS {
     private double offset = 0;
 
     public FridoNavx(Port port_id) {

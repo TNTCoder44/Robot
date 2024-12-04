@@ -9,16 +9,22 @@ import com.revrobotics.CANSparkLowLevel.MotorType;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
+import edu.wpi.first.math.kinematics.ChassisSpeeds;
+import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
 import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
+import edu.wpi.first.math.kinematics.DifferentialDriveWheelPositions;
+import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
+import edu.wpi.first.math.util.Units;
 import edu.wpi.first.util.sendable.SendableBuilder;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.I2C.Port;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.motorcontrol.Talon;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
 import frc.robot.Constants;
-
-
+import frc.robot.FridoNavx;
 
 public class DriveSubsystem extends SubsystemBase {
 
@@ -35,14 +41,23 @@ public class DriveSubsystem extends SubsystemBase {
     private RelativeEncoder encoderLeft;
 
     private DifferentialDriveOdometry odometry;
+    private DifferentialDriveKinematics kinematics;
+    private FridoNavx navx;
 
     public DriveSubsystem () {
         initializeMotors();
 
-        odometry = new DifferentialDriveOdometry(new Rotation2d(0), 0, 0);
+        navx = new FridoNavx(Port.kMXP);
+        odometry = new DifferentialDriveOdometry(new Rotation2d(0), 
+        0, 0);
+        kinematics = new DifferentialDriveKinematics(Constants.Drive.TANK_WIDTH);
 
+        var wheelSpeeds = new DifferentialDriveWheelSpeeds(2.0, 3.0);
+
+        ChassisSpeeds chassisSpeeds = kinematics.toChassisSpeeds(wheelSpeeds);
+    
         driveController = new DifferentialDrive(motorControllerFrontLeft, motorControllerFrontRight);
-    } 
+    }
 
     public static DriveSubsystem getInstance() {
         if (instance == null) {

@@ -20,6 +20,8 @@ public final class Constants {
     public static final int BACK_LEFT_ID = 11;  
 
     public static final double DRIVE_MOTOR_ROTATION_M = 0.47877872 / 10.71;
+
+    public static final double TANK_WIDTH = 0.5;
   }
 
   public static class Thrower {
