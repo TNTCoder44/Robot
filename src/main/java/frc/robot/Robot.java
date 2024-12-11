@@ -32,12 +32,13 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard
-    Shuffleboard.getTab("Robot").add(DriveSubsystem.getInstance());
-    Shuffleboard.getTab("System").add(CommandScheduler.getInstance());
+    //Shuffleboard.getTab("Robot").add(DriveSubsystem.getInstance());
+    //Shuffleboard.getTab("System").add(CommandScheduler.getInstance());
 
     // Initialize subsystems
-    DriveSubsystem.getInstance();
-    DriveSubsystem.getInstance().setDefaultCommand(new DriveCommand());
+    //DriveSubsystem.getInstance();
+    //DriveSubsystem.getInstance().setDefaultCommand(new DriveCommand());
+    Controller.getInstance();
   }
 
   /**

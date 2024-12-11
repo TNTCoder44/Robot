@@ -32,6 +32,14 @@ public final class Constants {
     public static final double SHOOTER_SPEED = 0.5;
   }
 
+  public static class Thrower2 {
+    public static final int BOTTOM_ID = 22;
+    public static final int TOP_RIGHT = 21;
+    public static final int TOP_LEFT = 20;
+
+    public static final double SHOOTER_SPEED = 0.5;
+  }
+
   public static class Pickup {
     public static final int PICKUP_ID = 14;
   }
